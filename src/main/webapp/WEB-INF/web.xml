@@ -3,10 +3,6 @@
 	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	id="supermarket-manager" version="2.5">
-	<display-name>supermarket-rest</display-name>
-	<welcome-file-list>
-		<welcome-file>index.jsp</welcome-file>
-	</welcome-file-list>
 	<!-- configuration spring container -->
 	<!-- needed for ContextLoaderListener -->
 	<context-param>
