@@ -8,8 +8,8 @@
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 	
 	<!-- load configuration -->
-	<!-- <context:property-placeholder location="classpath:conf/image-server-config.properties"/>
- -->
+	<!-- <context:property-placeholder location="classpath:resource/redis.properties" /> -->
+
 	<context:component-scan base-package="com.supermarket.rest.controller" />
 	<mvc:annotation-driven />
 	<bean

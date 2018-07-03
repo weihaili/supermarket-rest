@@ -6,6 +6,6 @@ import com.supermarket.pojo.TbContent;
 
 public interface ContentService {
 	
-	List<TbContent> getContentByParentId(Long categoryId);
+	List<TbContent> getContentByParentId(long categoryId);
 
 }

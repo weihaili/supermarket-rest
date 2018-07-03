@@ -5,12 +5,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import com.supermarket.common.utils.JsonUtils;
 import com.supermarket.mapper.TbItemCatMapper;
 import com.supermarket.pojo.TbItemCat;
 import com.supermarket.pojo.TbItemCatExample;
 import com.supermarket.pojo.TbItemCatExample.Criteria;
+import com.supermarket.rest.dao.JedisClient;
 import com.supermarket.rest.pojo.CatNode;
 import com.supermarket.rest.pojo.CatResult;
 import com.supermarket.rest.service.ItemCatService;
@@ -20,6 +24,13 @@ import com.supermarket.rest.service.ItemCatService;
  */
 @Service
 public class ItemCatServiceImpl implements ItemCatService {
+	
+	@Autowired
+	@Qualifier("jedisClinetSingle")
+	private JedisClient jedisClient;
+	
+	@Value("${INDEX_ITEM_CONTEGORY_LIST_KEY}")
+	private String INDEX_ITEM_CONTEGORY_LIST_KEY;
 	
 	@Autowired
 	private TbItemCatMapper itemCatMapper;
