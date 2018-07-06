@@ -52,10 +52,15 @@
 			<scope>provided</scope>
 		</dependency>
 		<!-- Redis客户端 -->
-			<dependency>
-				<groupId>redis.clients</groupId>
-				<artifactId>jedis</artifactId>
-			</dependency>
+		<dependency>
+			<groupId>redis.clients</groupId>
+			<artifactId>jedis</artifactId>
+		</dependency>
+		<!-- solr客户端 -->
+		<dependency>
+			<groupId>org.apache.solr</groupId>
+			<artifactId>solr-solrj</artifactId>
+		</dependency>
 	</dependencies>
 	<build>
 		<!-- configuration plugins -->

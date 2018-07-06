@@ -16,16 +16,19 @@ import redis.clients.jedis.JedisCluster;
 public class RedisClusterTest {
 	
 	private JedisCluster cluster;
+	private String redisIp="192.168.25.133";
 	
 	@Before
 	public void init() {
 		HashSet<HostAndPort> nodes = new HashSet<>();
-		nodes.add(new HostAndPort("192.168.220.128", 7001));
-		nodes.add(new HostAndPort("192.168.220.128", 7002));
-		nodes.add(new HostAndPort("192.168.220.128", 7003));
-		nodes.add(new HostAndPort("192.168.220.128", 7004));
-		nodes.add(new HostAndPort("192.168.220.128", 7005));
-		nodes.add(new HostAndPort("192.168.220.128", 7006));
+		nodes.add(new HostAndPort(redisIp, 7001));
+		nodes.add(new HostAndPort(redisIp, 7002));
+		nodes.add(new HostAndPort(redisIp, 7003));
+		nodes.add(new HostAndPort(redisIp, 7004));
+		nodes.add(new HostAndPort(redisIp, 7005));
+		nodes.add(new HostAndPort(redisIp, 7006));
+		nodes.add(new HostAndPort(redisIp, 7007));
+		nodes.add(new HostAndPort(redisIp, 7008));
 		cluster = new JedisCluster(nodes);
 	}
 	

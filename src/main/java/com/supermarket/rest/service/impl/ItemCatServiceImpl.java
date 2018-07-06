@@ -4,6 +4,7 @@ package com.supermarket.rest.service.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
@@ -29,8 +30,8 @@ public class ItemCatServiceImpl implements ItemCatService {
 	@Qualifier("jedisClinetSingle")
 	private JedisClient jedisClient;
 	
-	@Value("${INDEX_ITEM_CONTEGORY_LIST_KEY}")
-	private String INDEX_ITEM_CONTEGORY_LIST_KEY;
+	@Value("${INDEX_CATEGORY_RESULT_KEY}")
+	private String INDEX_CATEGORY_RESULT_KEY;
 	
 	@Autowired
 	private TbItemCatMapper itemCatMapper;
@@ -41,7 +42,22 @@ public class ItemCatServiceImpl implements ItemCatService {
 	@Override
 	public CatResult getItemCatList() {
 		CatResult catResult=new CatResult();
+		try {
+			String cacheValue = jedisClient.get(INDEX_CATEGORY_RESULT_KEY);
+			if (!StringUtils.isBlank(cacheValue)) {
+				catResult=JsonUtils.jsonToPojo(cacheValue, CatResult.class);
+				return catResult;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		catResult.setData(getCatList(0));
+		try {
+			String cacheStr = JsonUtils.objectToJson(catResult);
+			jedisClient.set(INDEX_CATEGORY_RESULT_KEY, cacheStr);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 		return catResult;
 	}

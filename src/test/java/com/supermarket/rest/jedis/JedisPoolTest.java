@@ -10,7 +10,7 @@ import redis.clients.jedis.JedisPool;
 
 public class JedisPoolTest {
 	
-	private String host="192.168.220.128";
+	private String host="192.168.25.133";
 	private int port=6379;
 	
 	private Jedis jedis;

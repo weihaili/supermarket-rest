@@ -8,7 +8,7 @@ import redis.clients.jedis.Jedis;
 
 public class JedisTest {
 	
-	private String host="192.168.220.128";
+	private String host="192.168.25.133";
 	private int port=6379;
 	
 	private Jedis jedis;
